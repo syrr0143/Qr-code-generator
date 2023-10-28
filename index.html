@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Preview</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div class="diagonal-container">
+    <h1>Image Preview</h1>
+    <form id="image-form">
+        <label for="image-url">Enter Image URL:</label>
+        <input type="text" id="image-url" placeholder="Enter the URL of an image" required>
+        <button type="submit">Preview Image</button>
+    </form>
+    <div id="image-output">
+        <!-- The image will be displayed here -->
+    </div>
+
+    <script>
+        const form = document.getElementById("image-form");
+        const imageUrlInput = document.getElementById("image-url");
+        const imageOutput = document.getElementById("image-output");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const imageUrl = imageUrlInput.value;
+
+            // Create an image element and set its source to the provided URL
+            const img = new Image();
+            img.src = imageUrl;
+
+            // Clear previous image
+            imageOutput.innerHTML = "";
+
+            // Append the new image to the output box
+            imageOutput.appendChild(img);
+        });
+    </script>
+   </div>
+</body>
+</html>
